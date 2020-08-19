@@ -8,14 +8,6 @@ class Kubeconsole < Formula
 
   def install
     bin.install "kubeconsole"
-
-    # Install bash completion
-    output = Utils.safe_popen_read("/kubeconsole", "completion", "bash")
-    (bash_completion/"kubeconsole").write output
-
-    # Install zsh completion
-    output = Utils.safe_popen_read("/kubeconsole", "completion", "zsh")
-    (zsh_completion/"_kubeconsole").write output
   end
 
   test do
