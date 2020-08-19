@@ -9,9 +9,6 @@ class Kubeconsole < Formula
   def install
     bin.install "kubeconsole"
 
-    output = Utils.safe_popen_read("ls -al #{bin}")
-    puts output
-    raise
     # Install bash completion
     output = Utils.safe_popen_read("#{bin}/kubeconsole", "completion", "bash")
     (bash_completion/"kubeconsole").write output
