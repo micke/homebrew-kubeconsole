@@ -2,7 +2,7 @@ class Kubeconsole < Formula
   desc "Utility to create temporary REPL pods from deployments"
   homepage "https://github.com/micke/kubeconsole"
   url "https://github.com/micke/kubeconsole/releases/download/v1.0.0/mac.tar.gz"
-  sha256 "ccb3c3cb79ec74394e7ca12d717aef17deb6a1010bd658c5ca0ba2fbbbcfd9b4"
+  sha256 "38fda706b42ec98921d82a2c7ca3a00d2617f437209b1f1e40eed82e50cd0e58"
 
   bottle :unneeded
 
