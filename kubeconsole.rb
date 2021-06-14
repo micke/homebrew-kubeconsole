@@ -5,41 +5,38 @@
 class Kubeconsole < Formula
   desc "Utility to create temporary REPL pods from deployments"
   homepage "https://github.com/micke/kubeconsole"
-  version "1.1.0"
+  version "1.1.1"
   license "MIT"
   bottle :unneeded
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/micke/kubeconsole/releases/download/v1.1.0/kubeconsole_1.1.0_darwin_amd64.tar.gz"
-      sha256 "3f0780d75813ccdf8cbe882d1a867537973d9c14937f323a8d2c4945030440b0"
+      url "https://github.com/micke/kubeconsole/releases/download/v1.1.1/kubeconsole_1.1.1_darwin_amd64.tar.gz"
+      sha256 "218dc287d88e0a5efe7830ba2821f0cfa8e61a38782f1181c900c187575a12ab"
     end
     if Hardware::CPU.arm?
-      url "https://github.com/micke/kubeconsole/releases/download/v1.1.0/kubeconsole_1.1.0_darwin_arm64.tar.gz"
-      sha256 "d97631d924936dbe4658e74fc004461ab38ef69e738a02dce648059c16f2b5c4"
+      url "https://github.com/micke/kubeconsole/releases/download/v1.1.1/kubeconsole_1.1.1_darwin_arm64.tar.gz"
+      sha256 "ac64bbed3645807c5461a97da4184d7c0a1ad0ad2a9e4f227d7f9fcae2d26a7c"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/micke/kubeconsole/releases/download/v1.1.0/kubeconsole_1.1.0_linux_amd64.tar.gz"
-      sha256 "f291716d7b0d42437c5c073ed6e0a10ace2af51caf8e7eabbcb5e6acbdf91b6d"
+      url "https://github.com/micke/kubeconsole/releases/download/v1.1.1/kubeconsole_1.1.1_linux_amd64.tar.gz"
+      sha256 "3c994e48d94bdabf945c3b9cb32503682cfc56965419a3815636c739dce4c45a"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/micke/kubeconsole/releases/download/v1.1.0/kubeconsole_1.1.0_linux_arm64.tar.gz"
-      sha256 "8be911e0a36ea9680822cc9088ca6e446a6b3a5bda070c06bc9ed3a7df2d0ca3"
+      url "https://github.com/micke/kubeconsole/releases/download/v1.1.1/kubeconsole_1.1.1_linux_arm64.tar.gz"
+      sha256 "f0e5dfde3ad253660fea1495287a1b27c1a9b342347e604fc1228b5c6ef2ff6f"
     end
   end
 
   def install
     bin.install "kubeconsole"
-  end
 
-  def post_install
     bash_completion.install "completions/kubeconsole.bash" => "kubeconsole"
-zsh_completion.install "completions/kubeconsole.zsh" => "_kubeconsole"
-fish_completion.install "completions/kubeconsole.fish" => "_kubeconsole"
-
+    zsh_completion.install "completions/kubeconsole.zsh" => "_kubeconsole"
+    fish_completion.install "completions/kubeconsole.fish" => "_kubeconsole"
   end
 
   test do
