@@ -7,7 +7,6 @@ class Kubeconsole < Formula
   homepage "https://github.com/micke/kubeconsole"
   version "1.1.1"
   license "MIT"
-  bottle :unneeded
 
   on_macos do
     if Hardware::CPU.intel?
