@@ -5,13 +5,13 @@
 class Kubeconsole < Formula
   desc "Utility to create temporary REPL pods from deployments"
   homepage "https://github.com/micke/kubeconsole"
-  version "1.3.0"
+  version "1.4.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/micke/kubeconsole/releases/download/v1.3.0/kubeconsole_1.3.0_darwin_amd64.tar.gz"
-      sha256 "261218f0192d736a82160c0d11d8280da132d60c89da5f216c88caf204494a89"
+      url "https://github.com/micke/kubeconsole/releases/download/v1.4.0/kubeconsole_1.4.0_darwin_amd64.tar.gz"
+      sha256 "72112ec143e8828f6eda07fe76e216fc57c15edeb52171faf74bf95415c175ac"
 
       def install
         bin.install "kubeconsole"
@@ -22,8 +22,8 @@ class Kubeconsole < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/micke/kubeconsole/releases/download/v1.3.0/kubeconsole_1.3.0_darwin_arm64.tar.gz"
-      sha256 "2ccb6126efa4ae6bf1d05487cd6b936038de42dd0a2b86c682d4f61248deb8a0"
+      url "https://github.com/micke/kubeconsole/releases/download/v1.4.0/kubeconsole_1.4.0_darwin_arm64.tar.gz"
+      sha256 "44a24b76de4466142d999e129f9d54af74d0b98a5ad3dbfacf71aaeb5ba9ff08"
 
       def install
         bin.install "kubeconsole"
@@ -36,28 +36,32 @@ class Kubeconsole < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/micke/kubeconsole/releases/download/v1.3.0/kubeconsole_1.3.0_linux_arm64.tar.gz"
-      sha256 "9dc3ca485c2cac6222693d202b4a55635b96260fb523508478c11a00667eee59"
+    if Hardware::CPU.intel?
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/micke/kubeconsole/releases/download/v1.4.0/kubeconsole_1.4.0_linux_amd64.tar.gz"
+        sha256 "9df77b7cc1bd7562877ef4982b98fd6b785e6163eca5356df8b8cfe2d6febebd"
 
-      def install
-        bin.install "kubeconsole"
+        def install
+          bin.install "kubeconsole"
 
-        bash_completion.install "completions/kubeconsole.bash" => "kubeconsole"
-        zsh_completion.install "completions/kubeconsole.zsh" => "_kubeconsole"
-        fish_completion.install "completions/kubeconsole.fish" => "_kubeconsole"
+          bash_completion.install "completions/kubeconsole.bash" => "kubeconsole"
+          zsh_completion.install "completions/kubeconsole.zsh" => "_kubeconsole"
+          fish_completion.install "completions/kubeconsole.fish" => "_kubeconsole"
+        end
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/micke/kubeconsole/releases/download/v1.3.0/kubeconsole_1.3.0_linux_amd64.tar.gz"
-      sha256 "eca0dee6cb6487985718ae1f9a27f6e04d73c4a17578264793cc7d3ef73322e5"
+    if Hardware::CPU.arm?
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/micke/kubeconsole/releases/download/v1.4.0/kubeconsole_1.4.0_linux_arm64.tar.gz"
+        sha256 "a956476f09f2abee1209a3b4156d8947696246a72e4dd933d38b77066c545d85"
 
-      def install
-        bin.install "kubeconsole"
+        def install
+          bin.install "kubeconsole"
 
-        bash_completion.install "completions/kubeconsole.bash" => "kubeconsole"
-        zsh_completion.install "completions/kubeconsole.zsh" => "_kubeconsole"
-        fish_completion.install "completions/kubeconsole.fish" => "_kubeconsole"
+          bash_completion.install "completions/kubeconsole.bash" => "kubeconsole"
+          zsh_completion.install "completions/kubeconsole.zsh" => "_kubeconsole"
+          fish_completion.install "completions/kubeconsole.fish" => "_kubeconsole"
+        end
       end
     end
   end
